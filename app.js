@@ -1,54 +1,53 @@
-document.getElementById("downloadForm").addEventListener("submit", async function (event) {
-    event.preventDefault();
+const form = document.getElementById("downloadForm");
 
-    const url = document.getElementById("insta-url").value;
-    const format = document.getElementById("format").value;
+if (form) {
+    form.addEventListener("submit", async function (event) {
+        event.preventDefault();
 
-    if (!url) {
-        alert("Please paste a valid Instagram link");
-        return;
-    }
+        // get platform name automatically
+        const platform = form.dataset.platform;
 
-    // 👉 Replace this with YOUR Render backend URL
-    const API_URL = "https://xdownloader-sf0e.onrender.com/api/download";
+        // find input inside this form (works for any page)
+        const urlInput = form.querySelector("input[name='url']");
+        const format = form.querySelector("#format").value;
 
-    try {
-        const response = await fetch(API_URL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ url, format })
-        });
+        const url = urlInput.value.trim();
 
-        if (!response.ok) {
-            alert("Failed to download media.");
+        if (!url) {
+            alert("Please paste a valid link");
             return;
         }
 
-        // Convert to file
-        const blob = await response.blob();
-        const downloadUrl = window.URL.createObjectURL(blob);
+        // 🔥 put your real backend here
+        const API_URL = "https://xdownloader-sf0e.onrender.com/api/download";
 
-        // Extract filename
-        const contentDisposition = response.headers.get("Content-Disposition");
-        let filename = "download.mp4";
+        try {
+            const response = await fetch(API_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ url, format, platform })
+            });
 
-        if (contentDisposition && contentDisposition.includes("filename=")) {
-            filename = contentDisposition.split("filename=")[1].replace(/"/g, "");
+            if (!response.ok) {
+                alert("Download failed.");
+                return;
+            }
+
+            const blob = await response.blob();
+            const downloadUrl = window.URL.createObjectURL(blob);
+
+            const a = document.createElement("a");
+            a.href = downloadUrl;
+            a.download = "download";
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+
+            window.URL.revokeObjectURL(downloadUrl);
+
+        } catch (error) {
+            console.error(error);
+            alert("Server error. Try again.");
         }
-
-        // Trigger download
-        const a = document.createElement("a");
-        a.href = downloadUrl;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-
-        window.URL.revokeObjectURL(downloadUrl);
-
-    } catch (error) {
-        console.error("Error:", error);
-        alert("Something went wrong. Try again later.");
-    }
-});
-
+    });
+}
