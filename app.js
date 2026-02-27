@@ -10,9 +10,9 @@ form.addEventListener("submit", async (e) => {
         return;
     }
 
-    // 🔵 Instagram → client-side
+    // Instagram → redirect to working downloader
     if (url.includes("instagram.com")) {
-        window.open(`https://inflact.com/downloader/instagram/action.php?url=${encodeURIComponent(url)}`, "_blank");
+        window.open(`https://snapinsta.to/?url=${encodeURIComponent(url)}`, "_blank");
         return;
     }
 
@@ -45,6 +45,7 @@ form.addEventListener("submit", async (e) => {
 
     alert("Platform not supported yet");
 });
+
 
 
 
