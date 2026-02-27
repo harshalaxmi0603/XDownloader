@@ -10,7 +10,7 @@ document.getElementById("downloadForm").addEventListener("submit", async functio
     }
 
     // 👉 Replace this with YOUR Render backend URL
-    const API_URL = "https://YOUR-RENDER-APP.onrender.com/api/download";
+    const API_URL = "https://xdownloader-sf0e.onrender.com/api/download";
 
     try {
         const response = await fetch(API_URL, {
@@ -51,3 +51,4 @@ document.getElementById("downloadForm").addEventListener("submit", async functio
         alert("Something went wrong. Try again later.");
     }
 });
+
