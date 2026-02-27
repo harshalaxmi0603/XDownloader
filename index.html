@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XDownloader - Universal Video & Audio Downloader Dashboard</title>
+    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Dashboard Specific Styles (Blush Pink Theme) --- */
+        #dashboard-intro {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        #dashboard-intro p {
+            font-size: 1.25em;
+            color: #555;
+        }
+        
+        .platform-module {
+            width: 150px; 
+            padding: 25px 15px; 
+            border-radius: 15px; 
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s; 
+            background-color: white; 
+            border: 2px solid var(--light-bg);
+            text-decoration: none; 
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .platform-module:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 12px 25px rgba(254, 130, 140, 0.3); /* Blush pink shadow on hover */
+            background-color: var(--light-bg); 
+        }
+        
+        /* Define the styling for the actual PNG images */
+        .platform-module img { 
+            width: 60px; /* Set the size */
+            height: 60px; 
+            margin-bottom: 15px; 
+            border-radius: 10px; /* Optional: Slight rounding for the logos */
+            object-fit: contain; /* Ensures logo fits without stretching */
+            transition: opacity 0.3s;
+        }
+        
+        .platform-module:hover img {
+            opacity: 0.9; /* Subtle visual feedback on image hover */
+        }
+        
+        .platform-module span { 
+            display: block; 
+            font-weight: 600; 
+            font-size: 1em; 
+            color: var(--secondary-color);
+        }
+
+        /* Remove all icon-placeholder specific styles */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content-card">
+            <div id="platform-grid">
+                
+                <a class="platform-module youtube" href="youtube.html">
+                    <img src="images/youtube_logo.png" alt="YouTube Downloader">
+                    <span>YouTube</span>
+                </a>
+                
+                <a class="platform-module instagram" href="instagram.html">
+                    <img src="images/instagram_logo.png" alt="Instagram Downloader">
+                    <span>Instagram</span>
+                </a>
+                
+                <a class="platform-module facebook" href="facebook.html">
+                    <img src="images/facebook_logo.png" alt="Facebook Downloader">
+                    <span>Facebook</span>
+                </a>
+                
+                <a class="platform-module tiktok" href="tiktok.html">
+                    <img src="images/tiktok_logo.png" alt="TikTok Downloader">
+                    <span>TikTok</span>
+                </a>
+                
+                <a class="platform-module douyin" href="douyin.html">
+                    <img src="images/douyin_logo.png" alt="Douyin Downloader">
+                    <span>Douyin</span>
+                </a>
+                
+                <a class="platform-module twitter" href="twitter.html">
+                    <img src="images/x_logo.png" alt="Twitter/X Downloader">
+                    <span>Twitter/X</span>
+                </a>
+                
+                <a class="platform-module reddit" href="reddit.html">
+                    <img src="images/reddit_logo.png" alt="Reddit Downloader">
+                    <span>Reddit</span>
+                </a>
+
+                <a class="platform-module pinterest" href="pinterest.html">
+                    <img src="images/pinterest_logo.png" alt="Pinterest Downloader">
+                    <span>Pinterest</span>
+                </a>
+
+            </div>
+            <p style="text-align: center; margin-top: 50px; font-style: italic; color: var(--primary-color);">
+                "Simply select your source, paste the link, and let XDownloader handle the rest!"
+            </p>
+            
+        </div>
+    </div>
+
+    <script src="header_footer.js"></script>
+    
+    <script src="app.js"></script> 
+</body>
+</html>

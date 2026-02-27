@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Pinterest Pins (Images & Videos) | XDownloader</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="content-card">
+            <h1 style="color: var(--primary-color); text-align: center; font-size: 2.5em; margin-bottom: 10px;">
+                Download Pinterest Pins (Images, Videos, GIFs)
+            </h1>
+            <p style="text-align: center; font-size: 1.2em; color: #777; margin-bottom: 30px;">
+                The easy way to save high-quality inspiration from Pinterest boards.
+            </p>
+
+            <div style="background-color: var(--light-bg); padding: 30px; border-radius: 12px; margin-bottom: 40px;">
+                <form id="downloadForm" data-platform="pinterest" style="display: flex; gap: 15px; flex-wrap: wrap; align-items: flex-end;">
+                    <div class="form-group" style="flex-grow: 1;">
+                        <label for="pinterest-url">Paste Pinterest Pin Link here</label>
+                        <input type="text" id="pinterest-url" name="url" placeholder="e.g. https://pin.it/aBcDeFg..." required>
+                    </div>
+                    
+                    <div class="form-group" style="width: 200px;">
+                        <label for="format">Download Option</label>
+                        <select id="format" name="format">
+                            <option value="image_best">Best Image Quality (JPG/PNG)</option>
+                            <option value="video_best">Video Pin (MP4)</option>
+                            <option value="gif">Animated GIF</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="download-btn">Download</button>
+                </form>
+            </div>
+            <h2 style="margin-top: 40px;">Your Source for High-Quality Creative Downloads</h2>
+            <p>
+                Pinterest is a treasure trove of ideas and inspiration, but downloading the original, high-resolution media can be tricky. **XDownloader Pinterest** simplifies the process, ensuring you get the sharpest images and clean video Pins directly to your device.
+            </p>
+            <p>
+                Whether you need images for a mood board, a video for a project, or a quick animated GIF, our tool automatically extracts the best source file available from the Pin link.
+            </p>
+
+            <h2 style="margin-top: 40px;">How to Save Pinterest Pins?</h2>
+            <ol>
+                <li>Open the Pinterest app or website, click the Pin you want to save, and use the **Share** button to **Copy Link**.</li>
+                <li>Paste the Pinterest URL into the XDownloader tool above.</li>
+                <li>Select your preferred format (Image, Video, or GIF).</li>
+                <li>Click the **Download** button and save the high-quality media file instantly.</li>
+            </ol>
+            
+            <h2 style="margin-top: 40px;">Frequently Asked Questions</h2>
+
+<details style="margin-bottom: 15px;">
+  <summary style="font-weight: 600; cursor: pointer; color: var(--primary-color); padding: 10px 0;">
+    Does it work for both images and videos?
+  </summary>
+  <p style="padding-left: 20px; border-left: 3px solid var(--light-bg);">
+    Yes, <strong>XDownloader Pinterest</strong> automatically detects whether the link contains an image or a video, allowing you to download the **highest resolution image** or the **MP4 video stream** directly.
+  </p>
+</details>
+
+<details style="margin-bottom: 15px;">
+  <summary style="font-weight: 600; cursor: pointer; color: var(--primary-color); padding: 10px 0;">
+    Is the quality better than right-clicking "Save Image As"?
+  </summary>
+  <p style="padding-left: 20px; border-left: 3px solid var(--light-bg);">
+    Often, yes. Pinterest usually compresses images in its interface. <strong>XDownloader</strong> fetches the **original source file**, giving you the best possible quality without compression.
+  </p>
+</details>
+
+<details style="margin-bottom: 15px;">
+  <summary style="font-weight: 600; cursor: pointer; color: var(--primary-color); padding: 10px 0;">
+    Do I need to log into Pinterest?
+  </summary>
+  <p style="padding-left: 20px; border-left: 3px solid var(--light-bg);">
+    No, <strong>XDownloader Pinterest</strong> works entirely in your browser — **no login or installation** required. Just paste the link and download your media instantly.
+  </p>
+</details>
+
+
+            <p style="font-size: 0.9em; margin-top: 40px; color: #999;">
+                *Disclaimer: Please respect content creators. Use downloaded Pins ethically and always give credit when using them for projects or reposts.
+            </p>
+        </div>
+    </div>
+
+    <script src="header_footer.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

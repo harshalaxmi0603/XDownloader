@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | XDownloader</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Specific styles for the Contact Form */
+        .contact-form label {
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-top: 15px;
+            display: block;
+        }
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content-card">
+            <h1 style="color: var(--primary-color); text-align: center; font-size: 2.5em; margin-bottom: 10px;">
+                Contact XDownloader
+            </h1>
+            <p style="text-align: center; font-size: 1.2em; color: #777; margin-bottom: 30px;">
+                We're here to help! Send us your questions, feedback, or report a bug.
+            </p>
+
+            <div style="background-color: var(--light-bg); padding: 30px; border-radius: 12px; margin-bottom: 40px;">
+                <form class="contact-form" action="/submit-contact" method="POST"> 
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                    
+                    <label for="email">Your Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                    
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                    
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                    
+                    <button type="submit" class="download-btn" style="width: 100%; margin-top: 25px;">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+            <h2 style="color: var(--secondary-color); font-size: 1.5em; border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 30px;">
+                Other Ways to Connect
+            </h2>
+            <div style="display: flex; justify-content: space-around; text-align: center; margin-top: 20px;">
+                <div style="width: 45%;">
+                    <p style="font-weight: 600; color: var(--primary-color);">Technical Support</p>
+                    <p>
+                        For bug reports, failed downloads, or technical queries:
+                        <br><a href="mailto:support@xdownloader.app" style="color: #007bff; text-decoration: none;">support@xdownloader.app</a>
+                    </p>
+                </div>
+                <div style="width: 45%;">
+                    <p style="font-weight: 600; color: var(--primary-color);">Business Inquiries</p>
+                    <p>
+                        For partnerships, press, or business matters:
+                        <br><a href="mailto:business@xdownloader.app" style="color: #007bff; text-decoration: none;">business@xdownloader.app</a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="header_footer.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
