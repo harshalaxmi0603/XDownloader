@@ -1,51 +1,53 @@
 const form = document.getElementById("downloadForm");
 
-form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+if (form) {
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-    const url = document.querySelector("input[name='url']").value.trim();
+        const platform = form.dataset.platform;
+        const url = form.querySelector("input[name='url']").value.trim();
+        const format = form.querySelector("#format").value;
 
-    if (!url) {
-        alert("Paste link first");
-        return;
-    }
-
-    // Instagram → redirect to working downloader
-    if (url.includes("instagram.com")) {
-        window.open(`https://snapinsta.to/?url=${encodeURIComponent(url)}`, "_blank");
-        return;
-    }
-
-    // 🔵 Facebook → client-side
-    if (url.includes("facebook.com")) {
-        window.open(`https://fdown.net/download.php?URL=${encodeURIComponent(url)}`, "_blank");
-        return;
-    }
-
-    // 🔵 YouTube → your backend (Render)
-    if (url.includes("youtube.com") || url.includes("youtu.be")) {
-        const response = await fetch("https://xdownloader-sf0e.onrender.com/api/download", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ url, format: "mp4_hd" })
-        });
-
-        if (!response.ok) {
-            alert("Download failed");
+        if (!url) {
+            alert("Paste link first");
             return;
         }
 
-        const blob = await response.blob();
-        const a = document.createElement("a");
-        a.href = URL.createObjectURL(blob);
-        a.download = "video.mp4";
-        a.click();
-        return;
-    }
+        // 🔥 Special popup for Douyin
+        if (platform === "douyin") {
+            alert("🚀 Initiating download process for Douyin...");
+        }
 
-    alert("Platform not supported yet");
-});
+        const API_URL = "https://xdownloader-sf0e.onrender.com/api/download";
 
+        try {
+            const response = await fetch(API_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ url, format, platform })
+            });
 
+            if (!response.ok) {
+                const err = await response.json();
+                alert("Failed: " + err.message);
+                return;
+            }
 
+            const blob = await response.blob();
+            const downloadUrl = window.URL.createObjectURL(blob);
 
+            const a = document.createElement("a");
+            a.href = downloadUrl;
+            a.download = "douyin-video.mp4";
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+
+            window.URL.revokeObjectURL(downloadUrl);
+
+        } catch (err) {
+            alert("Server error");
+            console.error(err);
+        }
+    });
+}
