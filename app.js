@@ -1,53 +1,47 @@
 const form = document.getElementById("downloadForm");
 
-if (form) {
-    form.addEventListener("submit", async function (event) {
-        event.preventDefault();
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-        // get platform name automatically
-        const platform = form.dataset.platform;
+    const url = document.querySelector("input[name='url']").value.trim();
 
-        // find input inside this form (works for any page)
-        const urlInput = form.querySelector("input[name='url']");
-        const format = form.querySelector("#format").value;
+    if (!url) {
+        alert("Paste link first");
+        return;
+    }
 
-        const url = urlInput.value.trim();
+    // 🔵 Instagram → client-side
+    if (url.includes("instagram.com")) {
+        window.open(`https://snapinsta.app/action.php?url=${encodeURIComponent(url)}`, "_blank");
+        return;
+    }
 
-        if (!url) {
-            alert("Please paste a valid link");
+    // 🔵 Facebook → client-side
+    if (url.includes("facebook.com")) {
+        window.open(`https://fdown.net/download.php?URL=${encodeURIComponent(url)}`, "_blank");
+        return;
+    }
+
+    // 🔵 YouTube → your backend (Render)
+    if (url.includes("youtube.com") || url.includes("youtu.be")) {
+        const response = await fetch("https://xdownloader-sf0e.onrender.com/api/download", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ url, format: "mp4_hd" })
+        });
+
+        if (!response.ok) {
+            alert("Download failed");
             return;
         }
 
-        // 🔥 put your real backend here
-        const API_URL = "https://xdownloader-sf0e.onrender.com/api/download";
+        const blob = await response.blob();
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "video.mp4";
+        a.click();
+        return;
+    }
 
-        try {
-            const response = await fetch(API_URL, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ url, format, platform })
-            });
-
-            if (!response.ok) {
-                alert("Download failed.");
-                return;
-            }
-
-            const blob = await response.blob();
-            const downloadUrl = window.URL.createObjectURL(blob);
-
-            const a = document.createElement("a");
-            a.href = downloadUrl;
-            a.download = "download";
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-
-            window.URL.revokeObjectURL(downloadUrl);
-
-        } catch (error) {
-            console.error(error);
-            alert("Server error. Try again.");
-        }
-    });
-}
+    alert("Platform not supported yet");
+});
