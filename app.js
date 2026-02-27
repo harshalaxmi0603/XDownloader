@@ -12,7 +12,7 @@ form.addEventListener("submit", async (e) => {
 
     // 🔵 Instagram → client-side
     if (url.includes("instagram.com")) {
-        window.open(`https://saveinsta.app/action.php?url=${encodeURIComponent(url)}`, "_blank");
+        window.open(`https://inflact.com/downloader/instagram/action.php?url=${encodeURIComponent(url)}`, "_blank");
         return;
     }
 
@@ -45,5 +45,6 @@ form.addEventListener("submit", async (e) => {
 
     alert("Platform not supported yet");
 });
+
 
 
