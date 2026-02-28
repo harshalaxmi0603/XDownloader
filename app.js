@@ -1,26 +1,18 @@
-const form = document.getElementById("downloadForm");
+function sendToTelegram() {
+    const url = document.getElementById("videoUrl").value.trim();
 
-form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const url = document.querySelector("input[name='url']").value;
-
-    const res = await fetch("https://xdownloader-sf0e.onrender.com/api/download", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ url })
-    });
-
-    if (!res.ok) {
-        alert("Download failed");
+    if (!url) {
+        alert("Paste video link first");
         return;
     }
 
-    const blob = await res.blob();
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "video.mp4";
-    a.click();
-});
+    const bot = "XDownloaderHelperBot";
+
+    // encode link safely
+    const encoded = encodeURIComponent(url);
+
+    const telegramLink = `https://t.me/${bot}?start=${encoded}`;
+
+    // redirect to Telegram
+    window.location.href = telegramLink;
+}
